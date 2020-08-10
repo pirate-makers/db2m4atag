@@ -108,8 +108,6 @@ func main() {
 	}
 
 	for _, file := range files {
-		log.Printf("working on %s/%s", *musicDir, file.Name())
-
 		if file.IsDir() || (filepath.Ext(file.Name()) != ".mp3" && filepath.Ext(file.Name()) != ".m4a") {
 			continue
 		}
@@ -152,7 +150,7 @@ func main() {
 			continue
 		}
 
-		log.Printf("updating %s: %s/%s/%s\n", file.Name(), s.Album.String, s.Artist.String, s.Title.String)
+		log.Printf("updating %s: %s/%s/%s", file.Name(), s.Album.String, s.Artist.String, s.Title.String)
 
 		if !*dryrun {
 			// apply the tags from the DB into the M4A file
@@ -181,9 +179,8 @@ func main() {
 				// "-X", strconv.Itoa(int(s.Rating.Int64)),
 				err = cmd.Run()
 				if err != nil {
-					log.Printf("Command finished with error: %v", err)
+					log.Printf("Command finished with error: %v\n", err)
 				}
-				log.Printf("new tags applied on %s", file.Name())
 				continue
 			}
 

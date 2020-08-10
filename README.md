@@ -62,13 +62,13 @@ If you're following the steps above, I strongly suggest copying the iphone files
 
 ```bash
 mkdir -p /data/iphone-backup
-cp /media/iPhone/iTunes_Control/
+cp /media/iPhone/iTunes_Control/iTunes/MediaLibrary.sqlitedb* /data/iphone-backup/
 rsync -r --progress --stats  /media/iPhone/iTunes_Control/Music /data/iphone-backup/
 cd /data/iphone-backup
 ```
 
-Now you can start using the tool:
+Now you can start using the tool to tag all the files:
 
 ```bash
-
+for i in F00  F01  F02  F03  F04  F05  F06  F07  F08  F09  F10  F11  F12  F13  F14  F15  F16  F17  F18  F19  F20  F21  F22  F23  F24  F25  F26  F27  F28  F29  F30  F31  F32  F33  F34  F35  F36  F37  F38  F39  F40  F41  F42  F43  F44  F45  F46  F47  F48  F49 ; do ./db2m4atag -musicDir /data/iphone-backup/Music/${i} -DBpath /data/iphone-backup/MediaLibrary.sqlitedb ; done
 ```
